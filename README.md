@@ -13,6 +13,5 @@ the terminal.
 
 UML Sequence Diagram: 
 
-At the following link:
 
 ![UML Diagram vpd](https://user-images.githubusercontent.com/86132170/180881923-c04a699a-9d36-4c3a-8d02-0741a26ed13a.png)
