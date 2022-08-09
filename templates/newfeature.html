@@ -1,0 +1,88 @@
+<!-- Citation: -->
+<!-- Date: 08/08/2022 -->
+<!-- Based on: Flask flash() method – How to Flash Messages in Flask?-->
+<!-- Source URL: https://www.askpython.com/python-modules/flask/flask-flash-method -->
+
+<!-- Citation: -->
+<!-- Date: 08/08/2022 -->
+<!-- Based on: AJAX Tutorial -->
+<!-- Source URL: https://howtodoinjava.com/javascript/complete-ajax-tutorial/ -->
+
+<!-- Citation: -->
+<!-- Date: 08/08/2022 -->
+<!-- Based on: Dietary Supplement Fact Sheets-->
+<!-- Source URL: https://ods.od.nih.gov/factsheets/ -->
+
+{%extends "base.html" %}
+{% block title %}Shows Recommended Intakes Based on Age{% endblock %}
+
+{% block content %}
+<form class="form" action="/newfeature">
+  <br />
+  <h2 align="center">Recommended Intakes Based on Age</h2><br />
+  <div class="form-control">
+    <label for="select_age_range">Select your age range:</label>
+    <select name="select_age_range" id="select_age_range">
+      <option value="Birth to 6 months">Birth to 6 months</option>
+      <option value="7-12 months">7-12 months</option>
+      <option value="1-3 years">1-3 years</option>
+      <option value="4-8 years">4-8 years</option>
+      <option value="9-13 years">9-13 years</option>
+      <option value="14-18 years">14-18 years</option>
+      <option value="19-50 years">19-50 years</option>
+      <option value="51+ years">51+ years</option>
+     </select>
+  </div>
+  <br />
+  <div class="table-responsive">
+      <table class="table table-striped table-bordered">
+          <thead>
+              <tr>
+                  <th>Supplement</th>
+                  <th>Age Range</th>
+                  <th>Male</th>
+                  <th>Female</th>
+                  <th>Pregnancy</th>
+                  <th>Lactation</th>
+              </tr>
+          </thead>
+          <tbody>
+            {% for row in datalist %}
+              <tr>
+                <td>{{row.supplement}}</td>
+                <td>{{row.age_range}}</td>
+                <td>{{row.male}}</td>
+                <td>{{row.female}}</td>
+                <td>{{row.pregnancy}}</td>
+                <td>{{row.lactation}}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+      </table>
+  </div>
+</form>
+<script>
+$(document).ready(function(){
+  get_data();
+  function get_data(selected='')
+  {
+      $.ajax({
+        url:'/fetchdata',
+        method: 'POST',
+        data: {selected:selected},
+        success: function(data)
+        {
+          $('tbody').html(data.response);
+        }
+      })
+  }
+  $('#select_age_range').change(function(){
+    var selected = $('#select_age_range option:selected').val();
+    get_data(selected);
+  });
+});
+</script>
+<p>The information displayed in this table is from the Dietary Supplement Fact Sheets provided by the National Institute of Health: 
+   Office of Dietary Supplements.</p>
+</body>
+{% endblock %}

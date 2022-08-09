@@ -1,0 +1,48 @@
+{%extends "base.html" %}
+{% block title %}Add Supplement to Results Table{% endblock %}
+
+{% block content %}
+<form class="form" action="/add-supplement" method="POST">
+  <br />
+    <h3 align="center">Add Supplement Information</h3><br />
+    <div class="form-control">
+      <label for="supplement">Choose supplement from menu:</label>
+      <select name="supplement" id="supplement">
+        <option value="vitamin A">Vitamin A</option>
+        <option value="vitamin B6">Vitamin B6</option>
+        <option value="iron">Iron</option>
+        <option value="manganese">Manganese</option>
+        <option value="omega-3 fatty acids">Omega-3 Fatty Acids</option>
+        <option value="potassium">Potassium</option>
+        <option value="riboflavin">Riboflavin</option>
+        <option value="thiamin">Thiamin</option>
+        <option value="selenium">Selenium</option>
+       </select>
+    </div>
+    <div class="form-control">
+        <label for="amount per serving">Enter Amount Per Serving:</label>
+        <input type="number" name= "amount per serving" class="form-control" id="amount per serving" placeholder="Enter Amount Per Serving" step="0.01" min="0" max="1000">
+    </div>
+    <div class="form-control">
+        <label for="unit">Choose unit from menu:</label>
+        <select name="unit" id="unit">
+          <option value="mcg RAE">mcg RAE</option>
+          <option value="mg">mg</option>
+          <option value="omega-3 fatty acids">g</option>
+          <option value="mcg">mcg</option>
+        </select>
+    </div>
+    <div class="form-control">
+      <label for="percent daily value">Enter Percent Daily Value:</label>
+      <input type="number" name= "percent daily value" class="form-control" id="percent daily value" placeholder="Enter % Daily Value">
+    </div>
+    <button type="submit" class="btn btn-dark">Submit</button>
+</form>
+<br />
+<h4>Instructions for choosing units:</h4>
+<p>The units displayed in the above menu are used to measure amounts of the supplements as follows:
+Vitamin A is measured in mcg RAE, Vitamin B6, Iron, Manganese, Potassium, Riboflavin, and Thiamin are measured in mg, Omega-3 Fatty Acids are measured in g,
+and Selenium is measured in mcg. 
+</p>
+<br />
+{% endblock %}

@@ -1,0 +1,18 @@
+{%extends "base.html" %}
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<form class="form" action="/login" method="POST">
+  <br />
+    <h3 align="center">Login Form</h3><br />
+    <div class="form-control">
+      <label for="user_name">User Name:</label>
+      <input type="text" name = "user_name" class="form-control" id="user_name" aria-describedby="nameHelp" placeholder="User Name">
+    </div>
+    <div class="form-control">
+      <label for="password">Password:</label>
+      <input type="password" name= "password" class="form-control" id="password" placeholder="Enter Password">
+    </div>
+    <button type="submit" class="btn btn-dark">Sign In</button>
+</form>
+{% endblock %}

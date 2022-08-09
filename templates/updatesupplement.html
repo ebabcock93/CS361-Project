@@ -1,0 +1,47 @@
+{%extends "base.html" %}
+{% block title %}Update Supplement{% endblock %}
+
+{% block content %}
+{% if single_selection %}
+<form class="form" action="/updateselection" method="POST">
+  <br />
+  <h3 align="center">Update Supplement Information</h3><br />
+    <div class="form-control">
+      <label for="selectid">Selection ID:</label>
+      <input type="text" name= "selectid" class="form-control" id="selectid" value="{{single_selection['selectid']}}" readonly>
+    </div>
+    <div class="form-control">
+      <label for="supplement">Supplement:</label>
+      <select name="supplement" id="supplement" value="{{single_selection['supplement']}}">
+        <option value="vitamin A">Vitamin A</option>
+        <option value="vitamin B6">Vitamin B6</option>
+        <option value="iron">Iron</option>
+        <option value="manganese">Manganese</option>
+        <option value="omega-3 fatty acids">Omega-3 Fatty Acids</option>
+        <option value="potassium">Potassium</option>
+        <option value="riboflavin">Riboflavin</option>
+        <option value="thiamin">Thiamin</option>
+        <option value="selenium">Selenium</option>
+       </select>
+    </div>
+    <div class="form-control">
+        <label for="amount per serving">Amount Per Serving:</label>
+        <input type="number" name= "amount per serving" class="form-control" id="amount per serving" value="{{single_selection['amount_per_serving']}}" step="0.01" min="0" max="1000">
+    </div>
+    <div class="form-control">
+        <label for="unit">Unit:</label>
+        <select name="unit" id="unit" value="{{single_selection['unit']}}">
+          <option value="mcg RAE">mcg RAE</option>
+          <option value="mg">mg</option>
+          <option value="omega-3 fatty acids">g</option>
+          <option value="mcg">mcg</option>
+        </select>
+    </div>
+    <div class="form-control">
+      <label for="percent daily value">Percent Daily Value:</label>
+      <input type="number" name= "percent daily value" class="form-control" id="percent daily value" value="{{single_selection['percent_daily_value']}}">
+    </div>
+    {% endif %}
+    <button type="submit" class="btn btn-dark">Submit</button>
+</form>
+{% endblock %}

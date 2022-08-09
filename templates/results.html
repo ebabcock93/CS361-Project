@@ -1,0 +1,34 @@
+{%extends "base.html" %}
+{% block title %}Results{% endblock %}
+
+{% block content %}
+<br />
+<h3 align="center">Results Table</h3><br />
+<div class="table-responsive">
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Supplement</th>
+        <th scope="col">Amount Per Serving</th>
+        <th scope="col">Unit</th>
+        <th scope="col">Percent Daily Value</th>
+        <th scope="col">Update</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for selection in all_selections %}
+      <tr>
+        <td>{{ selection['supplement'] }}</td>
+        <td>{{ selection['amount_per_serving'] }}</td>
+        <td>{{ selection['unit'] }}</td>
+        <td>{{ selection['percent_daily_value'] }}</td>
+        <td><a class="btn btn-dark" href="{{url_for('fetch_selection', selectid = selection['selectid'])}}">Update</a></td>
+        <td><a class="btn btn-dark" href="{{url_for('delete_selection', selectid = selection['selectid'])}}">Delete</a></td>
+      </tr>
+    {% endfor %}
+    <br />
+    <p>Return to <a href="/add-supplement">Add Supplement Information</a> to add another supplement.</p>
+    </tbody>
+</table>
+{% endblock %}
